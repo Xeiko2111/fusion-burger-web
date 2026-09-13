@@ -48,7 +48,6 @@ export function Header() {
 
   const go = (id: string) => {
     setOpen(false)
-    // Deja que la capa se cierre antes de mover el scroll
     window.setTimeout(() => scrollToSection(id), 180)
   }
 
@@ -112,7 +111,7 @@ export function Header() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Dos cortes de producto flotando al fondo: la capa también es escaparate */}
+            {}
             <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
               <div className="absolute -right-16 top-24 w-64 opacity-25">
                 <Product id="crispy-burger" alt="" sizes="260px" />

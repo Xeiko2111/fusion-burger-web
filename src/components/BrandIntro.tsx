@@ -8,11 +8,7 @@ import { Reveal, SplitText } from './ui/Type'
 
 const AWARDED = BURGERS.items.filter((b) => b.award)
 
-/**
- * Sección editorial. Composición asimétrica: el titular arranca en el margen
- * izquierdo, el texto cae desplazado a la derecha y la fotografía se sale del
- * encuadre por el borde. Nada está centrado.
- */
+
 export function BrandIntro() {
   const ref = useRef<HTMLElement>(null)
   const { t } = useI18n()
@@ -30,7 +26,7 @@ export function BrandIntro() {
       id="marca"
       className="relative overflow-hidden px-gutter py-16 lg:py-44 lg:pl-railpad"
     >
-      {/* La Cecina cortada por el borde derecho */}
+      {}
       <div className="pointer-events-none absolute -right-[8vw] top-1/2 z-0 hidden w-[46vw] max-w-[640px] -translate-y-1/2 lg:block">
         <motion.div style={reduced ? {} : { y: photoY }} className="will-change-transform">
           <Product
@@ -49,8 +45,7 @@ export function BrandIntro() {
           className="font-display-wide max-w-[9ch] text-d3 uppercase lg:text-d2"
         />
 
-        {/* En móvil la foto es un bloque más, con altura acotada: informa sin
-            empujar el texto fuera de pantalla */}
+        {}
         <Reveal className="mt-8 lg:hidden">
           <Product
             id="la-cecina"

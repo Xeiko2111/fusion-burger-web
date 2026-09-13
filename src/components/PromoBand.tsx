@@ -3,11 +3,7 @@ import { formatPrice, useI18n } from '@/lib/i18n'
 import { Product } from './ui/Product'
 import { Reveal } from './ui/Type'
 
-/**
- * Promoción real publicada por el local. Usa la mascota original recortada del
- * gráfico promocional: es la única pieza ilustrada de la marca y aquí es donde
- * tiene sentido, porque esta franja habla de oferta, no de producto.
- */
+
 export function PromoBand() {
   const { t, locale } = useI18n()
 
@@ -15,8 +11,7 @@ export function PromoBand() {
     <section className="relative overflow-hidden border-y border-white/10 px-gutter py-10 lg:py-16 lg:pl-railpad">
       <Reveal>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
-          {/* En móvil la mascota y el precio comparten fila con el título: la
-              oferta se entiende sin bajar */}
+          {}
           <div className="flex items-center gap-4 sm:block">
             <Product
               id="mascot"

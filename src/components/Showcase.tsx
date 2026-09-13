@@ -13,7 +13,7 @@ const PANELS: MenuItem[] = SHOWCASE_IDS.map(
   (id) => BURGERS.items.find((b) => b.id === id)!,
 ).filter(Boolean)
 
-/** Cuánto scroll vertical consume cada panel. Más alto = tránsito más lento. */
+
 const VH_PER_PANEL = 72
 
 function Panel({ item, index }: { item: MenuItem; index: number }) {
@@ -68,7 +68,6 @@ function Panel({ item, index }: { item: MenuItem; index: number }) {
   )
 }
 
-/** Versión sin movimiento: la misma información, apilada. */
 function StackedShowcase() {
   const { t } = useI18n()
   return (
@@ -100,8 +99,6 @@ export function Showcase() {
   })
 
   const count = PANELS.length
-  // Cada panel mide el 100% del contenedor (no 100vw: eso contaría la barra de
-  // scroll y la tira se iría desalineando panel a panel).
   const x = useTransform(scrollYProgress, [0, 1], ['0%', `-${(count - 1) * 100}%`])
   const progress = useTransform(scrollYProgress, [0, 1], [0, 1])
 
@@ -110,8 +107,6 @@ export function Showcase() {
     setCurrent(i)
   })
 
-  // El móvil no recibe el sticky horizontal: recibe un carrusel deslizable
-  // pensado para el pulgar. Ver ShowcaseMobile.
   if (!isDesktop) return <ShowcaseMobile panels={PANELS} />
   if (reduced) return <StackedShowcase />
 
@@ -132,7 +127,7 @@ export function Showcase() {
           ))}
         </motion.div>
 
-        {/* Cabecera fija de la sección */}
+        {}
         <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between px-gutter pt-24 lg:pt-28">
           <SplitText
             as="h2"
@@ -144,7 +139,7 @@ export function Showcase() {
           </p>
         </div>
 
-        {/* Progreso */}
+        {}
         <div className="absolute inset-x-0 bottom-0 px-gutter pb-7">
           <p className="mb-3 text-micro uppercase tracking-[0.16em] text-ash">
             {t(COPY.showcaseHint)}

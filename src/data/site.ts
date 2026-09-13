@@ -1,20 +1,5 @@
 import type { L } from './menu'
 
-/**
- * ÚNICO PUNTO DE EDICIÓN de los datos del negocio.
- *
- * Procedencia de cada dato:
- *  - Direcciones, teléfono y redes: fichas públicas del negocio y perfil oficial
- *    de Instagram (@fusion_burger_tenerife).
- *  - Promoción de almuerzos: fusionburgertenerife.es
- *  - Formulario de empleo: enlace publicado en la propia web.
- *
- * ⚠ PENDIENTE DE CONFIRMAR CON EL CLIENTE ANTES DE PUBLICAR:
- *    · Los horarios (`hours`) provienen de fichas de terceros y no coinciden
- *      entre sí. Confírmalos y actualízalos también en el JSON-LD de index.html.
- *    · Instagram indica 4 locales en Tenerife; aquí solo hay dos direcciones
- *      verificadas. Añade los que falten en `LOCATIONS`.
- */
 
 export interface Location {
   id: string
@@ -70,7 +55,6 @@ export const CONTACT = {
   locationCount: 4,
 }
 
-/** Promoción real publicada en la web actual. */
 export const PROMO = {
   price: 14.9,
   title: { es: 'Menú de almuerzos', en: 'Lunch menu' },
@@ -84,7 +68,6 @@ export const PROMO = {
   },
 }
 
-/** Cifras del producto. Todas salen de las descripciones reales de la carta. */
 export const FACTS: { value: number; unit: string; label: L }[] = [
   {
     value: 160,
@@ -118,7 +101,6 @@ export const NAV: { id: string; label: L }[] = [
   { id: 'locales', label: { es: 'Locales', en: 'Find us' } },
 ]
 
-/** Todo el texto de interfaz vive aquí para poder revisarlo de una sentada. */
 export const COPY = {
   tagline: { es: 'Feel the Fusion', en: 'Feel the Fusion' },
   heroLine1: { es: 'Feel', en: 'Feel' },
@@ -164,12 +146,6 @@ export const COPY = {
   locationsInTenerife: { es: 'locales en Tenerife', en: 'locations in Tenerife' },
 }
 
-/**
- * Selección para el showcase horizontal. La carta completa vive en la sección
- * «La carta»: aquí solo van las que aguantan una pantalla entera, empezando por
- * la clásica y cerrando con las premiadas. Edita el orden o añade ids sin tocar
- * el componente.
- */
 export const SHOWCASE_IDS = [
   'original-fusion',
   'american-burger',

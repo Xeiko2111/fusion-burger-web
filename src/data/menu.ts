@@ -1,17 +1,5 @@
 import type { ImageId } from './images'
 
-/**
- * CARTA DE FUSION BURGER TENERIFE
- *
- * Todo el contenido de este archivo procede de fuentes reales:
- *  - fusionburgertenerife.es (versión ES, consultada en septiembre de 2026)
- *  - fusionburgertenerife.es/menu-ingles/ (versión EN, recogida en el PDF aportado)
- *
- * No hay precios, descripciones ni productos inventados. Las listas de
- * `ingredients` son un resumen de la propia descripción del producto, no
- * información nueva: se usan en el showcase, donde el párrafo completo no cabe.
- */
-
 export type Locale = 'es' | 'en'
 export type L = Record<Locale, string>
 export type LList = Record<Locale, string[]>
@@ -19,22 +7,18 @@ export type LList = Record<Locale, string[]>
 export interface MenuItem {
   id: string
   name: L
-  /** Frase de marca tal y como aparece en la web actual */
   tagline?: L
   desc?: L
   price: number
   image?: ImageId
   ingredients?: LList
-  /** Reconocimientos reales obtenidos por el producto */
   award?: L
-  /** Opciones que el cliente puede elegir al pedirla */
   choice?: L
 }
 
 export interface MenuCategory {
   id: string
   label: L
-  /** Nota que aplica a toda la categoría, para no repetirla en cada producto */
   note?: L
   items: MenuItem[]
 }
@@ -628,7 +612,6 @@ export const DESSERTS: MenuCategory = {
   ],
 }
 
-/** Categorías de lista corta: nombre y precio, sin fotografía en los assets. */
 const simple = (id: string, name: string, price: number): MenuItem => ({
   id,
   name: { es: name, en: name },
@@ -745,10 +728,8 @@ export const MENU: MenuCategory[] = [
   OTHER_DRINKS,
 ]
 
-/** Producto destacado de la sección Featured: es el único con foto en movimiento. */
 export const FEATURED_ID = 'hot-cheddar-burger'
 
 export const FEATURED = BURGERS.items.find((b) => b.id === FEATURED_ID)!
 
-/** La del hero: también es un producto real de la carta. */
 export const HERO_BURGER = BURGERS.items.find((b) => b.id === 'chossburger')!

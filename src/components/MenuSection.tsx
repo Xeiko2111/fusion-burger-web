@@ -9,10 +9,7 @@ import { useHasHover, useMediaQuery } from '@/lib/hooks'
 import { Product } from './ui/Product'
 import { SplitText } from './ui/Type'
 
-/**
- * Fotografía que sigue al cursor. Solo en escritorio: es la razón por la que la
- * carta no necesita miniaturas. En móvil el trabajo lo hace el desplegable.
- */
+
 function HoverPreview({ item }: { item: MenuItem | null }) {
   const x = useSpring(useMotionValue(0), { stiffness: 180, damping: 22, mass: 0.5 })
   const y = useSpring(useMotionValue(0), { stiffness: 180, damping: 22, mass: 0.5 })
@@ -72,9 +69,7 @@ function Row({ item, index, highlighted, hasHover, isDesktop, reduced, onHover }
   const expandable = hasPhoto && !hasHover
   const price = formatPrice(item.price, locale)
 
-  /* Móvil: nombre y descripción a la izquierda, precio y chevron alineados a la
-     derecha. Los precios forman una columna que se escanea de un vistazo, y el
-     chevron dice sin palabras que la fila se abre. */
+
   const compactBody = (
     <div className="flex gap-4">
       <div className="min-w-0 flex-1">
@@ -174,7 +169,7 @@ export function MenuSection() {
   const hasHover = useHasHover()
   const isDesktop = useMediaQuery('(min-width: 1024px)')
   const reduced = useReducedMotion() ?? false
-  const [activeId, setActiveId] = useState(MENU[1].id) // arranca en Burgers
+  const [activeId, setActiveId] = useState(MENU[1].id) 
   const [hovered, setHovered] = useState<MenuItem | null>(null)
   const [highlight, setHighlight] = useState<string | null>(null)
   const tabsRef = useRef<HTMLDivElement>(null)
@@ -195,9 +190,22 @@ export function MenuSection() {
     return () => window.removeEventListener(OPEN_MENU_ITEM, onOpen)
   }, [])
 
+  const firstRender = useRef(true)
+
   useEffect(() => {
-    const el = tabsRef.current?.querySelector<HTMLElement>(`[data-cat="${activeId}"]`)
-    el?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
+    const strip = tabsRef.current
+    const tab = strip?.querySelector<HTMLElement>(`[data-cat="${activeId}"]`)
+    if (!strip || !tab) return
+
+    const delta = tab.getBoundingClientRect().left - strip.getBoundingClientRect().left
+    strip.scrollTo({
+      left: strip.scrollLeft + delta - (strip.clientWidth - tab.clientWidth) / 2,
+      behavior: 'smooth',
+    })
   }, [activeId])
 
   const isShortList = active.items.every((i) => !i.image && !i.desc)
@@ -219,8 +227,7 @@ export function MenuSection() {
         </div>
       </div>
 
-      {/* Barra de categorías: se queda pegada bajo la cabecera al bajar, de modo
-          que cambiar de categoría nunca obliga a volver arriba. */}
+      {}
       <div className="sticky top-[68px] z-30 mt-6 bg-void/95 py-3 backdrop-blur-md lg:static lg:mt-14 lg:bg-transparent lg:py-0 lg:backdrop-blur-none">
         <div
           ref={tabsRef}

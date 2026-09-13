@@ -14,7 +14,7 @@
 
   html {
     -webkit-text-size-adjust: 100%;
-    scroll-behavior: auto; /* Lenis se encarga del smooth scroll */
+    scroll-behavior: auto;
   }
 
   body {
@@ -23,8 +23,6 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Archivo es variable: se estira a lo ancho para los titulares.
-     Cada clase declara también la familia, para poder usarlas sueltas. */
   .font-display,
   .font-display-wide,
   .font-display-tight {
@@ -57,7 +55,7 @@
     border-radius: 1px;
   }
 
-  /* El foco no debe desaparecer detras de las fotos superpuestas */
+
   a:focus-visible,
   button:focus-visible {
     position: relative;
@@ -71,8 +69,7 @@
 }
 
 @layer components {
-  /* Grano fino sobre toda la pagina: da cuerpo al negro puro y evita el banding
-     de los degradados calidos que hay detras del producto. */
+
   .grain::after {
     content: '';
     position: fixed;
@@ -83,7 +80,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* Luz calida detras del producto. Nunca es un color de relleno, solo luz. */
+
   .ember-light {
     background: radial-gradient(
       55% 55% at 50% 55%,
@@ -93,8 +90,7 @@
     );
   }
 
-  /* Dos fotografías de origen (los GIF de producto) vienen sobre fondo negro
-     opaco. Esta máscara difumina sus bordes para que no se vea el rectángulo. */
+
   .feather {
     -webkit-mask-image: radial-gradient(68% 68% at 50% 50%, #000 52%, transparent 100%);
     mask-image: radial-gradient(68% 68% at 50% 50%, #000 52%, transparent 100%);
@@ -113,8 +109,7 @@
     }
   }
 
-  /* Respuesta táctil. Todo lo que se puede pulsar la lleva: en móvil es la
-     única señal de que algo ha ocurrido al tocar. */
+
   .tap {
     transition:
       transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -127,13 +122,12 @@
     transform: scale(0.972);
   }
 
-  /* Degradado al final de los carruseles horizontales: avisa de que sigue
-     habiendo contenido a la derecha. */
+
   .edge-fade-r {
     -webkit-mask-image: linear-gradient(to right, #000 82%, transparent 100%);
     mask-image: linear-gradient(to right, #000 82%, transparent 100%);
   }
-  /* Solo en móvil: en escritorio las categorías caben en varias líneas */
+
   @media (min-width: 1024px) {
     .edge-fade-r {
       -webkit-mask-image: none;

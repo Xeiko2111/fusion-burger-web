@@ -5,15 +5,6 @@ import { COPY } from '@/data/site'
 import { useI18n } from '@/lib/i18n'
 import { scrollToSection, useMediaQuery } from '@/lib/hooks'
 
-/**
- * Barra de acciones fija de móvil. Las dos cosas que alguien con hambre quiere
- * hacer —ver qué hay y saber dónde está— quedan siempre a un pulgar, sin tener
- * que volver arriba.
- *
- * Aparece al pasar el hero (donde esas dos acciones ya están a la vista) y se
- * retira al llegar al cierre, que las repite a tamaño grande. Así nunca hay dos
- * juegos del mismo botón en pantalla.
- */
 export function MobileBar() {
   const { t } = useI18n()
   const isDesktop = useMediaQuery('(min-width: 1024px)')

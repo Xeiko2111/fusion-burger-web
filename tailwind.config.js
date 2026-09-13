@@ -4,22 +4,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta muestreada de los assets reales de Fusion Burger.
-        void: '#000000', // negro puro: 5 fotos de origen vienen sobre negro y funden sin costura
-        char: '#14100C', // carbon calido (unica superficie elevada del sitio)
+        void: '#000000', 
+        char: '#14100C', 
         smoke: '#221C15',
         bone: '#FFFFFF',
-        ash: '#9A9187', // gris calido para texto secundario
-        lime: '#C4D745', // muestreado del logotipo oficial
+        ash: '#9A9187', 
+        lime: '#C4D745', 
         'lime-deep': '#8FA02A',
-        ember: '#D7600A', // media cromatica de la fotografia de producto: solo como luz
+        ember: '#b5d116', 
       },
       fontFamily: {
         display: ['Archivo', 'Archivo Expanded', 'system-ui', 'sans-serif'],
         sans: ['Instrument Sans', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        // Escala tipografica: razon ~1.5 en display, 1.25 en texto
+        
         micro: ['0.6875rem', { lineHeight: '1.2', letterSpacing: '0.06em' }],
         note: ['0.8125rem', { lineHeight: '1.5' }],
         body: ['1rem', { lineHeight: '1.6' }],

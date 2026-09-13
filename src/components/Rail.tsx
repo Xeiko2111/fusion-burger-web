@@ -4,11 +4,7 @@ import { scrollToSection, useActiveSection } from '@/lib/hooks'
 
 const IDS = NAV.map((n) => n.id)
 
-/**
- * Navegación de escritorio. En lugar de una barra de enlaces arriba, un raíl
- * vertical fijo en el borde izquierdo: cada sección es una marca, la activa se
- * alarga y se enciende. Ocupa el espacio de un scrollbar y se lee de un vistazo.
- */
+
 export function Rail() {
   const { t } = useI18n()
   const active = useActiveSection(IDS)

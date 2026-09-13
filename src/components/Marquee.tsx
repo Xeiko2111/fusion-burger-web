@@ -4,11 +4,7 @@ import { useI18n } from '@/lib/i18n'
 
 const REPEATS = 6
 
-/**
- * Un único marquee en toda la página, con el lema real de la marca. Animación
- * de CSS sobre transform: no toca el hilo principal y se detiene sola si hay
- * reducción de movimiento.
- */
+
 export function Marquee() {
   const { t } = useI18n()
   const reduced = useReducedMotion()

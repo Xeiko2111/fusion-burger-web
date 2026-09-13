@@ -3,10 +3,7 @@ import { CONTACT, COPY, LOCATIONS } from '@/data/site'
 import { useI18n } from '@/lib/i18n'
 import { Reveal, SplitText } from './ui/Type'
 
-/**
- * Locales. Sin iframe de mapa: la dirección a tamaño grande y un enlace directo
- * a la navegación resuelven mejor la tarea real, que es llegar.
- */
+
 export function Locations() {
   const { t } = useI18n()
 

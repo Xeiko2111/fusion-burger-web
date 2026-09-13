@@ -8,11 +8,7 @@ import { scrollToSection, useMediaQuery } from '@/lib/hooks'
 import { Product } from './ui/Product'
 import { SplitText } from './ui/Type'
 
-/**
- * Hero de móvil. Nada de una pantalla completa medio vacía: titular arriba,
- * fotografía a una altura acotada y, sin bajar, las dos acciones reales y la
- * pista de hacia dónde continúa la página. Todo cabe en un pulgar.
- */
+
 function HeroMobile() {
   const { t, locale } = useI18n()
   const reduced = useReducedMotion()
@@ -47,7 +43,7 @@ function HeroMobile() {
         </motion.p>
       </div>
 
-      {/* La foto ocupa una altura acotada y comparte fila con su etiqueta */}
+      {}
       <motion.div
         initial={reduced ? false : { opacity: 0, scale: 1.05 }}
         animate={reduced ? undefined : { opacity: 1, scale: 1 }}
@@ -110,11 +106,7 @@ function HeroMobile() {
   )
 }
 
-/**
- * Hero de escritorio. La fotografía va por encima del titular y lo tapa en
- * parte: el producto siempre gana a la tipografía. Al bajar, la burger crece
- * un poco y el texto se va antes que ella.
- */
+
 function HeroDesktop() {
   const ref = useRef<HTMLElement>(null)
   const { t, locale } = useI18n()

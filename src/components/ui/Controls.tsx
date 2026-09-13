@@ -22,10 +22,6 @@ interface ActionProps {
   ariaLabel?: string
 }
 
-/**
- * Botón que se inclina hacia el cursor. El imán solo existe donde hay hover
- * real; en táctil es un botón normal con un área de toque cómoda (48px).
- */
 export function Action({
   children,
   href,
@@ -108,7 +104,6 @@ interface CounterProps {
   duration?: number
 }
 
-/** Cuenta hasta la cifra cuando entra en pantalla. Una sola vez. */
 export function Counter({ to, className = '', duration = 1.4 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: '-15%' })

@@ -7,21 +7,13 @@ import { formatPrice, useI18n } from '@/lib/i18n'
 import { openMenuItem } from '@/lib/bus'
 import { Product } from './ui/Product'
 
-/**
- * Showcase de móvil. No es el sticky horizontal del escritorio encogido: es un
- * carrusel de scroll nativo con snap, donde la siguiente burger asoma por el
- * borde derecho. Ese trozo visible es la señal de que hay más, y no hay que
- * explicarlo. Los puntos permiten saltar y el gesto es el que ya conoce
- * cualquiera que use el móvil.
- */
 export function ShowcaseMobile({ panels }: { panels: MenuItem[] }) {
   const { t, locale } = useI18n()
   const reduced = useReducedMotion()
   const scroller = useRef<HTMLUListElement>(null)
   const [active, setActive] = useState(0)
 
-  // IntersectionObserver en lugar de un listener de scroll: la tarjeta que
-  // ocupa el centro del carril es la activa.
+
   useEffect(() => {
     const root = scroller.current
     if (!root) return
@@ -41,8 +33,15 @@ export function ShowcaseMobile({ panels }: { panels: MenuItem[] }) {
   }, [panels.length])
 
   const goTo = useCallback((index: number) => {
-    const card = scroller.current?.querySelector<HTMLElement>(`[data-index="${index}"]`)
-    card?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+    const strip = scroller.current
+    const card = strip?.querySelector<HTMLElement>(`[data-index="${index}"]`)
+    if (!strip || !card) return
+
+    const delta = card.getBoundingClientRect().left - strip.getBoundingClientRect().left
+    strip.scrollTo({
+      left: strip.scrollLeft + delta - (strip.clientWidth - card.clientWidth) / 2,
+      behavior: 'smooth',
+    })
   }, [])
 
   return (
@@ -85,7 +84,7 @@ export function ShowcaseMobile({ panels }: { panels: MenuItem[] }) {
               onClick={() => openMenuItem('burgers', item.id)}
               className="tap block w-full rounded-none border border-white/12 bg-char/60 px-4 pb-4 pt-2 text-left active:border-lime"
             >
-              {/* La foto ocupa una altura fija y contenida: informa, no sepulta */}
+              {}
               <div className="ember-light relative flex h-[190px] items-center justify-center">
                 {item.image && (
                   <Product
@@ -121,7 +120,7 @@ export function ShowcaseMobile({ panels }: { panels: MenuItem[] }) {
         ))}
       </ul>
 
-      {/* Puntos: además de indicar posición, son un control de salto */}
+      {}
       <div className="mt-5 flex items-center justify-center gap-2 px-gutter">
         {panels.map((item, i) => (
           <button

@@ -3,11 +3,6 @@ import { useI18n } from '@/lib/i18n'
 import { Counter } from './ui/Controls'
 import { Reveal, SplitText } from './ui/Type'
 
-/**
- * El producto en cifras. Todas salen de las descripciones reales de la carta:
- * el gramaje del semismash, el del medallón, las horas de marinado del pollo
- * y el número de salsas de la casa.
- */
 export function Facts() {
   const { t } = useI18n()
 

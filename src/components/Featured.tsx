@@ -9,9 +9,6 @@ import { Product } from './ui/Product'
 import { Action } from './ui/Controls'
 import { Reveal, SplitText } from './ui/Type'
 
-/* Piezas compartidas: el contenido es el mismo en los dos tamaños, solo cambia
-   el orden en que se presenta. */
-
 function Eyebrow() {
   const { t } = useI18n()
   return (
@@ -66,8 +63,7 @@ function FeaturedMobile() {
       </Reveal>
       <Title small />
 
-      {/* La foto va justo debajo del nombre y por encima del resto: es lo que
-          vende el plato, pero no entierra ni el precio ni la acción. */}
+      {}
       <div className="mt-6">
         <Photo />
       </div>
@@ -100,12 +96,6 @@ function FeaturedMobile() {
   )
 }
 
-/**
- * Destacada de escritorio. Único sitio donde la imagen se mueve sola, porque la
- * fotografía original ya era una secuencia: el queso cayendo sobre la burger.
- * Va sobre negro puro y sin luz detrás, porque este asset viene con fondo
- * opaco: la máscara radial disuelve el borde del rectángulo.
- */
 function FeaturedDesktop() {
   const ref = useRef<HTMLElement>(null)
   const { t, locale } = useI18n()

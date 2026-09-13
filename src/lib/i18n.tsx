@@ -5,9 +5,7 @@ import type { L, Locale } from '@/data/menu'
 interface I18nValue {
   locale: Locale
   setLocale: (l: Locale) => void
-  /** Resuelve un par {es, en} al idioma activo */
   t: (value: L) => string
-  /** Resuelve una lista bilingüe */
   tl: (value: Record<Locale, string[]>) => string[]
 }
 
@@ -21,7 +19,6 @@ function initialLocale(): Locale {
     const saved = window.localStorage.getItem(STORAGE_KEY)
     if (saved === 'es' || saved === 'en') return saved
   } catch {
-    /* almacenamiento no disponible: seguimos con el idioma del navegador */
   }
   return navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'es'
 }
@@ -34,7 +31,6 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     try {
       window.localStorage.setItem(STORAGE_KEY, locale)
     } catch {
-      /* sin persistencia, no pasa nada */
     }
   }, [locale])
 

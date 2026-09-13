@@ -15,20 +15,12 @@ type TagName = keyof typeof TAGS
 interface SplitTextProps {
   text: string
   className?: string
-  /** Retardo antes de que entre la primera palabra */
   delay?: number
-  /** Separación entre palabras */
   stagger?: number
   as?: TagName
-  /** Si es true entra al montar; si no, al aparecer en pantalla */
   onMount?: boolean
 }
 
-/**
- * Titular por palabras: cada una sube desde detrás de una máscara. El texto
- * completo queda en aria-label y las piezas se ocultan al lector de pantalla,
- * así que la animación no rompe la semántica.
- */
 export function SplitText({
   text,
   className = '',
@@ -89,7 +81,6 @@ interface RevealProps {
   delay?: number
 }
 
-/** Entrada de desenfocado a nítido. Reservada para el texto de apoyo. */
 export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
   const reduced = useReducedMotion()
   if (reduced) return <div className={className}>{children}</div>

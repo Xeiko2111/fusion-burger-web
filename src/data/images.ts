@@ -1,16 +1,8 @@
-// GENERADO por tools/gen_manifest.py — no editar a mano.
-// Manifiesto de los assets originales de Fusion Burger ya optimizados a WebP.
-
 export interface ImageAsset {
-  /** ruta dentro de /assets, sin extensión */
   path: string
-  /** ancho intrínseco del archivo base */
   w: number
-  /** alto intrínseco del archivo base */
   h: number
-  /** anchos disponibles para el srcset */
   widths: readonly number[]
-  /** true si el WebP es animado: no se le aplica srcset */
   animated?: boolean
 }
 
