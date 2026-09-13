@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --void: #000000;
+    --char: #14100c;
+    --lime: #c4d745;
+    --ember: #d7600a;
+    --ash: #9a9187;
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto; /* Lenis se encarga del smooth scroll */
+  }
+
+  body {
+    @apply bg-void text-bone font-sans antialiased;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Archivo es variable: se estira a lo ancho para los titulares.
+     Cada clase declara también la familia, para poder usarlas sueltas. */
+  .font-display,
+  .font-display-wide,
+  .font-display-tight {
+    font-family: 'Archivo', system-ui, sans-serif;
+  }
+
+  .font-display {
+    font-variation-settings: 'wdth' 118, 'wght' 800;
+    font-weight: 800;
+  }
+
+  .font-display-wide {
+    font-variation-settings: 'wdth' 125, 'wght' 900;
+    font-weight: 900;
+  }
+
+  .font-display-tight {
+    font-variation-settings: 'wdth' 100, 'wght' 700;
+    font-weight: 700;
+  }
+
+  ::selection {
+    background: var(--lime);
+    color: #000;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--lime);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* El foco no debe desaparecer detras de las fotos superpuestas */
+  a:focus-visible,
+  button:focus-visible {
+    position: relative;
+    z-index: 60;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}
+
+@layer components {
+  /* Grano fino sobre toda la pagina: da cuerpo al negro puro y evita el banding
+     de los degradados calidos que hay detras del producto. */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: -50%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Luz calida detras del producto. Nunca es un color de relleno, solo luz. */
+  .ember-light {
+    background: radial-gradient(
+      55% 55% at 50% 55%,
+      rgb(215 96 10 / 0.28) 0%,
+      rgb(215 96 10 / 0.08) 45%,
+      transparent 72%
+    );
+  }
+
+  /* Dos fotografías de origen (los GIF de producto) vienen sobre fondo negro
+     opaco. Esta máscara difumina sus bordes para que no se vea el rectángulo. */
+  .feather {
+    -webkit-mask-image: radial-gradient(68% 68% at 50% 50%, #000 52%, transparent 100%);
+    mask-image: radial-gradient(68% 68% at 50% 50%, #000 52%, transparent 100%);
+  }
+
+  .marquee-track {
+    animation: marquee 38s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  /* Respuesta táctil. Todo lo que se puede pulsar la lleva: en móvil es la
+     única señal de que algo ha ocurrido al tocar. */
+  .tap {
+    transition:
+      transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 180ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tap:active {
+    transform: scale(0.972);
+  }
+
+  /* Degradado al final de los carruseles horizontales: avisa de que sigue
+     habiendo contenido a la derecha. */
+  .edge-fade-r {
+    -webkit-mask-image: linear-gradient(to right, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 82%, transparent 100%);
+  }
+  /* Solo en móvil: en escritorio las categorías caben en varias líneas */
+  @media (min-width: 1024px) {
+    .edge-fade-r {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hairline {
+    border-color: rgb(255 255 255 / 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .grain::after {
+    display: none;
+  }
+}

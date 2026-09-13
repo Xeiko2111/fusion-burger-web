@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es" class="bg-black">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <title>Fusion Burger Tenerife · Hamburguesas gourmet artesanales</title>
+    <meta
+      name="description"
+      content="Hamburguesería gourmet en Tenerife. Doble semismash de vaca premium, pan brioche artesanal y salsas de la casa. Carta completa, precios y locales en Barranco Grande y Caletillas."
+    />
+    <link rel="canonical" href="https://fusionburgertenerife.es/" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
+
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:site_name" content="Fusion Burger Tenerife" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:title" content="Fusion Burger Tenerife · Hamburguesas gourmet artesanales" />
+    <meta
+      property="og:description"
+      content="Doble semismash de vaca premium, pan brioche artesanal y salsas de la casa. Feel the Fusion."
+    />
+    <meta property="og:url" content="https://fusionburgertenerife.es/" />
+    <meta property="og:image" content="https://fusionburgertenerife.es/assets/brand/og-image.jpg" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fusion Burger Tenerife" />
+    <meta
+      name="twitter:description"
+      content="Hamburguesas gourmet artesanales en Tenerife. Feel the Fusion."
+    />
+    <meta name="twitter:image" content="https://fusionburgertenerife.es/assets/brand/og-image.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap"
+    />
+
+    <!-- La imagen del hero se precarga: es el LCP de la pagina -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/hero/hero-burger.webp"
+      imagesrcset="/assets/hero/hero-burger-420.webp 420w, /assets/hero/hero-burger-720.webp 720w, /assets/hero/hero-burger.webp 964w"
+      imagesizes="(max-width: 768px) 90vw, 46vw"
+      fetchpriority="high"
+    />
+
+    <!--
+      Datos estructurados. IMPORTANTE: los horarios estan tomados de fichas de
+      terceros (Tripadvisor / Google) y deben confirmarse con el cliente antes de
+      publicar. Mantener sincronizado con src/data/site.ts
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Restaurant",
+            "@id": "https://fusionburgertenerife.es/#barranco-grande",
+            "name": "Fusion Burger Tenerife · Barranco Grande",
+            "servesCuisine": ["Burgers", "American", "Canarian"],
+            "priceRange": "€€",
+            "url": "https://fusionburgertenerife.es/",
+            "telephone": "+34922618133",
+            "image": "https://fusionburgertenerife.es/assets/brand/og-image.jpg",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Carretera General del Sur 53A",
+              "addressLocality": "Santa Cruz de Tenerife",
+              "postalCode": "38107",
+              "addressRegion": "Santa Cruz de Tenerife",
+              "addressCountry": "ES"
+            },
+            "sameAs": [
+              "https://www.instagram.com/fusion_burger_tenerife/",
+              "https://www.tiktok.com/@fusion_burger_tenerife"
+            ]
+          },
+          {
+            "@type": "Restaurant",
+            "@id": "https://fusionburgertenerife.es/#caletillas",
+            "name": "Fusion Burger Tenerife · Caletillas",
+            "servesCuisine": ["Burgers", "American", "Canarian"],
+            "priceRange": "€€",
+            "url": "https://fusionburgertenerife.es/",
+            "telephone": "+34922618133",
+            "image": "https://fusionburgertenerife.es/assets/brand/og-image.jpg",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Avenida Marítima 33",
+              "addressLocality": "Candelaria",
+              "postalCode": "38530",
+              "addressRegion": "Santa Cruz de Tenerife",
+              "addressCountry": "ES"
+            },
+            "sameAs": [
+              "https://www.instagram.com/fusion_burger_tenerife/",
+              "https://www.tiktok.com/@fusion_burger_tenerife"
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-black">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
